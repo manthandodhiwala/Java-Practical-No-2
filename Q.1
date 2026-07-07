@@ -1,0 +1,45 @@
+// Define the interface
+interface StudentOperations {
+
+    double calculateTotal(double mark1, double mark2, double mark3);
+
+    String calculateGrade(double total);
+}
+
+// Implement the interface
+class StudentResult implements StudentOperations {
+
+    @Override
+    public double calculateTotal(double mark1, double mark2, double mark3) {
+        return mark1 + mark2 + mark3;
+    }
+
+    @Override
+    public String calculateGrade(double total) {
+        double average = total / 3;
+
+        if (average >= 90) {
+            return "A Grade";
+        } else if (average >= 75) {
+            return "B Grade";
+        } else if (average >= 50) {
+            return "C Grade";
+        } else {
+            return "Fail";
+        }
+    }
+}
+
+// Main class
+public class StudentInterfaceDemo {
+
+    public static void main(String[] args) {
+
+        StudentOperations student = new StudentResult();
+
+        double total = student.calculateTotal(85, 90, 80);
+
+        System.out.println("Total Marks: " + total);
+        System.out.println("Grade: " + student.calculateGrade(total));
+    }
+}
