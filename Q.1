@@ -1,0 +1,68 @@
+// Abstract class
+abstract class MathOperation {
+
+    // Abstract method
+    abstract double calculate(double a, double b);
+
+    // Concrete method
+    void displayResult(String operation, double result) {
+        System.out.println(operation + " Result: " + result);
+    }
+}
+
+// Addition class
+class Addition extends MathOperation {
+    @Override
+    double calculate(double a, double b) {
+        return a + b;
+    }
+}
+
+// Subtraction class
+class Subtraction extends MathOperation {
+    @Override
+    double calculate(double a, double b) {
+        return a - b;
+    }
+}
+
+// Multiplication class
+class Multiplication extends MathOperation {
+    @Override
+    double calculate(double a, double b) {
+        return a * b;
+    }
+}
+
+// Division class
+class Division extends MathOperation {
+    @Override
+    double calculate(double a, double b) {
+        if (b == 0) {
+            throw new ArithmeticException("Division by zero is not allowed.");
+        }
+        return a / b;
+    }
+}
+
+// Main class
+public class MathTest {
+
+    public static void main(String[] args) {
+
+        System.out.println("Program Started");
+
+        MathOperation add = new Addition();
+        MathOperation sub = new Subtraction();
+        MathOperation mul = new Multiplication();
+        MathOperation div = new Division();
+
+        double a = 20;
+        double b = 10;
+
+        add.displayResult("Addition", add.calculate(a, b));
+        sub.displayResult("Subtraction", sub.calculate(a, b));
+        mul.displayResult("Multiplication", mul.calculate(a, b));
+        div.displayResult("Division", div.calculate(a, b));
+    }
+}
